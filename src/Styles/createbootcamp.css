@@ -1,0 +1,80 @@
+.create-bootcamp-container{
+    max-width:90%;
+    margin:4rem auto;
+    display:inline-block;
+    padding:4rem 6rem ;
+    border:1px solid #666;
+    border-radius: 2rem;;
+    box-shadow: 2px 3px 3px 4px #999;
+}
+
+.create-bootcamp-container input{
+    width:90%;
+    height:4rem;
+    outline:none;
+    font-size:1.8rem;
+    margin:1rem 0;
+    /* border:none; */
+    border-radius: 1rem;;
+    border-bottom:#666 1px solid;
+}
+.create-bootcamp-container label{
+    font-size:3rem;
+    /* margin: 2rem 0; */
+}
+
+.create-heading{
+    text-align: left;
+    font-size: 4rem;
+    font-weight: 300;
+}
+
+.new-bootcamp-basic-info,
+.new-bootcamp-contact-info,
+.new-bootcamp-careers,
+.new-bootcamp-additional-info{
+    text-align: left;
+    display: block;
+    margin: 4rem 0;
+    padding:0 2rem;
+}
+
+.additonal-info .flex{
+    align-items: center;
+}
+
+.additonal-info label{
+    /* border:1px solid black; */
+    width:70%;
+    height:4rem;
+    /* font-size:2.4rem; */
+    flex-shrink: 0;
+}
+
+.additonal-info input{
+    /* border:1px solid black; */
+    width:30%;
+}
+
+.new-bootcamp-contact-info{
+
+}
+
+.new-bootcamp-additional-info{
+
+}
+
+.new-bootcamp-basic-info h3,
+.new-bootcamp-contact-info h3,
+.new-bootcamp-careers h3,
+.new-bootcamp-additional-info h3{
+    font-size: 2rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    color:#008cba
+}
+
+.create-bootcamp-btn{
+    padding:2rem 8rem 2rem 2rem ;
+}

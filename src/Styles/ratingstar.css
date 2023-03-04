@@ -1,0 +1,19 @@
+.checked-star, .unchecked-star,.half-checked-star{
+    color:gold;
+    font-size: 1.2rem;
+}
+
+.rating-star-container{
+    display:flex;
+    gap:0.5rem;
+    align-items: center;
+}
+
+.ratings{
+    margin-left:1rem;
+    background-color: gold;
+    border-radius: 0.5rem;
+    padding: 0.2rem 0.5rem;
+    font-size:1.2rem;
+    font-weight: 500;
+}

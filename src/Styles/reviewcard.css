@@ -1,0 +1,59 @@
+.review-card{
+    background-color: white;
+    width:32%;
+    border-radius: 1.4rem;
+    text-align: center;
+}
+
+.review-card-container{
+    max-width: 90%;
+    margin: 0 auto;;
+    padding: 2rem 1.5rem;
+}
+
+.review-title{
+    font-weight: 600;
+    font-size: 2.4rem;
+    padding:1rem 0;
+    color:#222;
+}
+
+.review{
+    font-size: 1.6rem;
+    padding:1rem 0;
+    color:#333;
+    line-height: 1.4;
+    border:none;
+    border-bottom: 0.5px solid #666;
+    
+}
+
+/* .full-review{
+
+} */
+
+.reviewer{
+    font-weight: 600;
+    font-size: 2rem;
+    padding:1rem 0;
+    color:#222;
+}
+
+.reviewer-role{
+    font-weight: 500;
+    font-size: 1.8rem;
+    padding:1rem 0;
+    color:#444;
+}
+
+@media(max-width:700px){
+    .review-card{
+        width:45%;
+    }
+}
+
+@media(max-width:440px){
+    .review-card{
+        width:80%;
+    }
+}

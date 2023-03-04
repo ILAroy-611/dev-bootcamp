@@ -1,0 +1,33 @@
+.add-review-modal-container{
+    max-width:75%;
+    margin:0 auto;
+    /* border: 1px solid black; */
+}
+
+.add-review-heading{
+    font-size:3rem;
+    color:#008cba;
+    margin: 2rem 0;
+}
+
+.add-review-modal-container input,
+ .add-review-modal-container textarea{
+    width:90%;
+    margin:0 auto;
+    padding:1rem 2rem;
+    font-size: 1.8rem;
+    outline:none;
+    
+}
+
+.add-review-modal-action-bar,
+.add-review-modal-container input,
+.add-review-modal-container textarea{
+    margin-top:2rem;
+    margin-left:2rem;
+    margin-right:2rem;
+}
+
+.add-review-modal-action-bar{
+    padding-right:6rem;
+}

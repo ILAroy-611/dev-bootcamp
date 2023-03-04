@@ -1,0 +1,78 @@
+.user-profile-container{
+    max-width: 50%;
+    margin: 1rem auto;
+    padding:1rem 2rem;
+    /* border:1px solid black; */
+    
+}
+
+.user-details{
+    height:4.4rem;
+    display: flex;
+    gap:1rem;
+    width:100%;
+    margin: 0 auto;
+    padding:2rem 4rem;
+    /* border: 2px solid green */
+}
+
+.user-details h3,p{
+    font-size: 2rem;
+    font-weight: 500; 
+}
+
+.name, .role{
+    text-transform: capitalize;
+}
+
+.user-details h3{
+    color:#008cba;
+}
+
+.user-profile-image{
+    margin-bottom: 1rem;
+    margin-top:1rem;
+}
+
+.profile-options{
+    display:flex;
+    justify-content: space-between;
+    margin:2rem 0;
+    padding: 2rem 4rem;
+}
+
+@media(max-width:900px){
+    .user-profile-container{
+        max-width:60%;
+    }
+}
+
+@media(max-width:700px){
+    .user-profile-container{
+        max-width:82%;
+    }
+}
+
+@media(max-width:440px){
+    .user-profile-container{
+        max-width:96%;
+    }
+    .profile-options{
+        flex-direction: column;
+        gap:2rem;
+        padding:2rem;
+    }
+
+    .user-details h3,p{
+        font-size: 1.6rem;
+        font-weight: 500; 
+    }
+    .user-details{
+        padding:2rem;
+    }
+
+    .change-pword-btn, .edit-btn{
+        width:70%;
+        margin:0 auto;
+    }
+}

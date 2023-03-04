@@ -1,0 +1,152 @@
+
+.detailed-bootcamp-container{
+    max-width:80%;
+    margin:4rem auto;
+    padding:1rem;
+    /* border:1px solid #999; */
+    
+}
+
+/* .detailed-bootcamp-img{
+    width:45%;
+} */
+
+.courses,
+.detailed-bootcamp{
+    text-align: justify;
+    padding:0 2rem;
+}
+
+.courses{
+    max-width:40%;
+}
+.detailed-bootcamp{
+    width:60%;
+}
+
+.detailed-bootcamp-description, 
+.detailed-bootcamp-name,
+.detailed-bootcamp-cost, 
+.detailed-bootcamp-created-info{
+    margin-bottom:2rem;
+}
+
+.detailed-bootcamp-name{
+    font-size:4rem;
+    text-transform: capitalize;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.detailed-bootcamp-description{
+    line-height:1.6;
+    font-size:1.8rem;
+    letter-spacing: 0.4px;;
+}
+
+.detailed-bootcamp-ratings{
+    margin-bottom: 1rem;;
+}
+
+.detailed-bootcamp-reviews{
+    margin-bottom:3rem;
+
+}
+
+.detailed-bootcamp-created-info{
+    font-size: 1.8rem;
+}
+
+.detailed-bootcamp-careers{
+    display:flex;
+    gap:1rem;
+    align-items: center;
+    flex-wrap:wrap;
+}
+
+.detailed-bootcamp-cost{
+    font-size:2.4rem;
+    font-weight:500
+}
+
+.bootcamp-courses-container{
+    text-align: justify;
+}
+.bt-courses-heading, .bt-courses-text{
+    margin-bottom: 2rem;
+}
+.bt-courses-heading{
+    font-size:3rem;
+    font-weight:500;
+}
+
+.bt-courses-text{
+    font-size:2rem;
+    color:#555;
+}
+
+.courses ol{
+    list-style-type: decimal;
+    padding:0 4rem;
+    font-size:1.8rem;
+}
+
+.courses li{
+    margin-bottom: 0.5rem;;
+}
+
+.bootcamp-review-titlebar {
+    
+    max-width:75%;
+    margin:0 auto;
+    /* padding-top:2rem; */
+}
+
+.bootcamp-reviews-heading{
+    font-size:2.6rem;
+    font-weight: 500;;
+    /* text-align: left; */
+}
+
+.detailed-bootcamp-course-action-btns,
+.detailed-bootcamp-action-btns{
+    display:flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.detailed-bootcamp-course-action-btns{
+    margin-top:2rem;
+    gap:1rem;
+}
+
+.detailed-bootcamp-action-btns{
+    margin-top:3rem;
+    gap:4rem;
+    padding:0 2rem;
+}
+
+.delete-bootcamp-btn{
+    color:red;
+    background-color: white;
+    border:1px solid red;
+}
+
+.delete-bootcamp-btn:hover{
+    color:white;
+    border:1px solid white;
+    background-color: red;
+}
+
+.add-course-btn, .update-bootcamp-btn{
+    color:#008cba;
+    background-color: white;
+    border:1px solid #008cba;
+}
+
+.add-course-btn:hover,
+.update-bootcamp-btn:hover{
+    color:white;
+    border:1px solid white;
+    background-color: #008cba;;
+}

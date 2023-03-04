@@ -1,0 +1,56 @@
+.campreviews-card{
+    width:100%;
+    text-align: justify;
+}
+
+.campreviews-card-container{
+    max-width:75%;
+    margin: 0 auto;
+    padding:2rem;
+}
+
+.bootcamp-reviews-time{
+    padding-top:0.5rem;
+    font-size:1.4rem
+}
+
+.bootcamp-reviews-div{
+padding:1rem 0;
+}
+
+.bootcamp-reviews-title{
+    font-size:2rem;
+    text-transform: capitalize;
+}
+
+.bootcamp-reviews-text{
+    font-size: 1.6rem;
+}
+
+.bootcamp-reviews-user{
+    padding:0.8rem 0;
+    text-transform: capitalize;
+    justify-content: space-between;
+}
+
+.review-user{
+    max-width:40%
+}
+
+.bootcamp-reviews-action-bar{
+    max-width:50%;
+    gap:2rem;
+}
+
+.delete-review-btn{
+    color:white;
+    background-color: red;
+    border:1px solid white;
+    
+}
+
+.delete-review-btn:hover{
+    color:red;
+    background-color: white;
+    border:1px solid red;
+}

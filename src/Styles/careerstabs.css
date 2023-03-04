@@ -1,0 +1,25 @@
+
+
+.btn{
+    display: inline-block;
+    padding:0.8rem;
+    background-color: #008cba;
+    color:white;
+    border-radius: 0.4rem;
+    outline:none;
+    border:none;
+    cursor:pointer;
+    transition: all 0.4s linear;
+}
+
+.btn-tabs{
+    font-size:1.6rem;
+    font-weight: 500;
+    border-radius: 0.6rem;
+}
+
+.btn:hover{
+    background-color: white;
+    color:#008cba;
+    border:1px solid #008cba;
+}

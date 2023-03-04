@@ -83,3 +83,37 @@ export const deleteBootcamp = createAsyncThunk(
     return response;
   }
 );
+
+//to update a bootcamp
+export const editBootcamp = createAsyncThunk(
+  "bootcamp/edit",
+  async (bootcampObj, thunkAPI) => {
+    const token = localStorage.getItem("token");
+    let response = await instance
+      .put(
+        `bootcamps/${bootcampObj._id}`,
+        {
+          name: bootcampObj.name,
+          description: bootcampObj.description,
+          website: bootcampObj.website,
+          phone: bootcampObj.phone,
+          email: bootcampObj.email,
+          address: bootcampObj.address,
+          careers: bootcampObj.careers,
+          housing: bootcampObj.housing,
+          averageCost: bootcampObj.averageCost,
+          jobAssistance: bootcampObj.jobAssistance,
+          jobGuarantee: bootcampObj.jobGuarantee,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((res) => res.data)
+      .catch((error) => thunkAPI.rejectWithValue(error));
+    return response;
+  }
+);

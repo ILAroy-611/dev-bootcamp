@@ -1,19 +1,23 @@
 import { useDispatch, useSelector } from "react-redux";
-import { createBootcamp } from "../Redux/Thunks/BootCampThunk";
-import { useState } from "react";
+import { editBootcamp } from "../Redux/Thunks/BootCampThunk";
+import { useEffect, useState } from "react";
 import "../Styles/createbootcamp.css";
+import { useNavigate } from "react-router-dom";
+
 
 function UpdateBootcamp() {
   const {user}= useSelector((state)=>state.auth);
-  const {bootcampDetails} = useSelector(state=>state.bootcamp);
+  const {bootcampDetails, isBootcampEdited} = useSelector(state=>state.bootcamp);
 
   const dispatch= useDispatch();
+  const navigate= useNavigate()
 
   let options=["Web Development", "Mobile Development", "UI/UX", "Data Science", "Business", "Front-end Development", "Back-end Development", "Full-Stack Development", "Database Administration", "Other"] ;
   options=options.filter(opt=>!bootcampDetails.careers.includes(opt))
   
 
   const[bootcampObj, setBootcampObj] = useState({
+    _id:bootcampDetails._id,
     name:bootcampDetails.name,
 		description: bootcampDetails.description,
 		website: bootcampDetails.website,
@@ -40,10 +44,15 @@ function UpdateBootcamp() {
     setBootcampObj({...bootcampObj, [e.target.name]:opt})
   }
 
-  const handleCreateBootcamp=()=>{
-    dispatch(createBootcamp(bootcampObj))
+  const handleUpdateBootcamp=()=>{
+    dispatch(editBootcamp(bootcampObj))
   }
 
+  useEffect(()=>{
+    if(isBootcampEdited){
+      navigate(`/bootcamps/${bootcampDetails.slug}`)
+    }
+  },[isBootcampEdited])
 
   return (
     <div className="create-bootcamp-container">
@@ -150,36 +159,6 @@ function UpdateBootcamp() {
                     <option value={opt} className="career-options" >{opt}</option>
                 )
             } )}
-            {/* <option value="Web Development" className="career-options"  >
-              Web Development
-            </option>
-            <option value="Mobile Development" className="career-options" >
-              Mobile Development
-            </option>
-            <option value="UI/UX" className="career-options" >
-              UI/UX
-            </option>
-            <option value="Data Science" className="career-options" >
-              Data Science
-            </option>
-            <option value="Business" className="career-options" >
-              Business
-            </option>
-            <option value="Front-end Development" className="career-options" >
-              Front-end Development
-            </option>
-            <option value="Back-end Development" className="career-options" >
-              Back-end Development
-            </option>
-            <option value="Full-Stack Development" className="career-options" >
-              Full-Stack Development
-            </option>
-            <option value="Database Administration" className="career-options" >
-              Database Administration
-            </option>
-            <option value="Other" className="career-options" >
-              Other
-            </option> */}
           </select>
         </div>
         <div className="new-bootcamp-additional-info">
@@ -224,7 +203,7 @@ function UpdateBootcamp() {
         </div>
       </form>
       <div className="create-bootcamp-btn flex">
-        <button className="submit-bootcamp-btn btn" onClick={handleCreateBootcamp} >Create Bootcamp</button>
+        <button className="submit-bootcamp-btn btn" onClick={handleUpdateBootcamp} >Edit Details</button>
         <button className="cancel-btn btn">Cancel</button>
       </div>
     </div>

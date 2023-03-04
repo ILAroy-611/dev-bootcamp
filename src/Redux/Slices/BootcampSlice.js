@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { createBootcamp, deleteBootcamp, getAllBootcamps, getSingleBootcamp } from "../Thunks/BootCampThunk"
+import { createBootcamp, deleteBootcamp, editBootcamp, getAllBootcamps, getSingleBootcamp } from "../Thunks/BootCampThunk"
 
 
 const initialState={
@@ -8,6 +8,7 @@ const initialState={
     bootcampError: false,
     bootcampDataArray:null,
     bootcampDetails:null,
+    isBootcampEdited:false,
 }
 
 export const bootcampSlice= createSlice({
@@ -71,6 +72,19 @@ export const bootcampSlice= createSlice({
         builder.addCase(deleteBootcamp.rejected, (state,action)=>{
             state.isBootcampLoading=false;
             state.bootcampSuccess=false;
+            state.bootcampError=true;
+        })
+        builder.addCase(editBootcamp.pending, (state,action)=>{
+            state.isBootcampLoading=false;
+        })
+        builder.addCase(editBootcamp.fulfilled, (state,action)=>{
+            state.isBootcampLoading=false;
+            state.isBootcampEdited=true;
+            state.bootcampError=false;
+        })
+        builder.addCase(editBootcamp.rejected, (state,action)=>{
+            state.isBootcampLoading=false;
+            state.isBootcampEdited=false;
             state.bootcampError=true;
         })
     }

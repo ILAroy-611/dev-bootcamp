@@ -14,6 +14,7 @@ import Bootcamp from './Pages/Bootcamp';
 import DetailedBootcamp from './Pages/DetailedBootcamp';
 import CreateBootcamp from './Pages/CreateBootcamp';
 import UpdateBootcamp from './Pages/UpdateBootcamp';
+import CreateCourses from './Pages/CreateCourses';
 
 
 
@@ -45,6 +46,7 @@ function App() {
             <Route exact path='/bootcamps/createNew' element={ <CreateBootcamp/> }></Route>
             <Route exact path='/bootcamp/:id/edit' element={ < UpdateBootcamp /> }></Route>
             <Route exact path='/bootcamps/:slug' element={ <DetailedBootcamp /> }></Route>
+            <Route exact path='/bootcamps/:id/courses' element={ < CreateCourses /> }></Route>
             <Route path='/me' element={<UserProfile />}></Route>
             <Route path='/edit-profile' element={<EditProfile />}></Route>
           </Routes>

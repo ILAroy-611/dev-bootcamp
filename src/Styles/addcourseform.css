@@ -1,0 +1,54 @@
+.add-course-container{
+    max-width:75%;
+    margin: 2rem auto;
+}
+
+.add-course-container input,
+.add-course-container select,
+.add-course-container label,
+.scholarship{
+    width:70%;
+    margin:0 auto;
+    display:inline-block;
+}
+
+.add-course-container input,
+.add-course-container select{
+    height:5rem;
+    font-size:2rem;
+    padding:1rem 2rem ;
+    outline:none;
+}
+.add-course-container label{
+    font-size:3rem;
+    padding:3rem 2rem ;
+    text-align: left;
+}
+
+.scholarship{
+    align-items: center;
+    padding:1rem;
+    /* border:1px solid black; */
+    display:flex;
+}
+
+.add-course-container legend{
+    font-size:4rem;
+    color:#008cba;
+    text-indent: 2rem;
+    /* border:1px solid black; */
+    margin-left:2rem;
+    padding: 0 0.5rem;
+    background-color: white;
+}
+
+.add-course-container fieldset{
+    /* border: 1px solid #777; */
+    box-shadow: 0.3rem 0.2rem 1rem 4px #999;
+}
+
+.create-course-btn{
+    margin-top:2rem;
+    font-size:2rem;
+}
+

@@ -1,16 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CareerTabs from "./CareerTabs";
 import RatingStar from "./RatingStar";
 import "../Styles/bootcampcard.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { getSingleBootcamp } from "../Redux/Thunks/BootCampThunk";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getSingleUser } from "../Redux/Thunks/UserThunk";
 import { getCourseforBootcamp } from "../Redux/Thunks/CourseThunk";
 import { getReviewsforBootcamp } from "../Redux/Thunks/ReviewThunk";
 
 function BootcampCard({ bootcamp }) {
   const dispatch = useDispatch();
+  
 
   const handleShowBootcamp = () => {
     dispatch(getSingleBootcamp(bootcamp.id));
@@ -18,6 +19,8 @@ function BootcampCard({ bootcamp }) {
     dispatch(getCourseforBootcamp(bootcamp.id));
     dispatch(getReviewsforBootcamp(bootcamp.id));
   };
+
+  
 
   return (
     <div className="bootcamp-card">

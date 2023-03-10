@@ -4,17 +4,21 @@ import { NavLink } from "react-router-dom";
 import CampReviewsCard from "../Components/CampReviewsCard";
 import PasswordModal from "../Components/PasswordModal";
 import Spinner from "../Components/Spinner";
+import useUser from "../hooks/useUser";
 import { getMyReviews } from "../Redux/Thunks/ReviewThunk";
 // import { updatePassword } from "../Redux/Thunks/AuthThunk";
 import "../Styles/userprofile.css";
 
 function UserProfile() {
-  const { user, authLoading } = useSelector((state) => state.auth);
+  const{user}= useUser();
+  
+  // const { user, authLoading } = useSelector((state) => state.auth);
   const { myReviews, loading } = useSelector((state) => state.review);
 
   const dispatch = useDispatch();
 
   const [openPasswordModal, setOpenPasswordModal] = useState(false);
+
 
   useEffect(() => {
     if (user && user.role !== "publisher") {
@@ -22,11 +26,8 @@ function UserProfile() {
     }
   }, [user]);
 
+
   return (
-    <>
-      {authLoading ? (
-        <Spinner />
-      ) : (
         <section className="user-profile-page">
           <div className="user-profile-container">
             <div className="user-profile-image">
@@ -45,9 +46,9 @@ function UserProfile() {
               <p>{user?.role}</p>
             </div>
             <div className="profile-options">
-              <NavLink to="/edit-profile" className="link btn edit-btn">
+              <NavLink to="/edit-profile" className="link btn edit-btn" >
                 Edit Profile
-              </NavLink>
+              </NavLink >
               <NavLink
                 className="link btn change-pword-btn"
                 onClick={() => setOpenPasswordModal(!openPasswordModal)}
@@ -75,18 +76,16 @@ function UserProfile() {
                   <></>
                 )}
               </div>
-            ) : user !== null && user.role == "publisher" ? (
+            ) : user != null && user.role === "publisher" ? (
               <div className="my-bootcamps">
                 <h2 className="my-bootcamps-heading">BootCamps Owned by Me</h2>
               </div>
             ) : (
               <></>
             )}
-          </div>
+          </div> 
         </section>
-      )}
-    </>
-  );
+  )
 }
 
 export default UserProfile;

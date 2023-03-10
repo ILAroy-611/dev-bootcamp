@@ -9,11 +9,13 @@ import { serviceData } from "../data/serviceData";
 import { getALlReviews } from "../Redux/Thunks/ReviewThunk";
 import { NavLink } from "react-router-dom";
 import "../Styles/home.css";
+import useUser from "../hooks/useUser";
 // import { getAllBootcamps } from "../Redux/Thunks/BootCampThunk";
 
 function Home() {
+  const { user, getUserInfo } = useUser();
   const dispatch = useDispatch();
-
+  // console.log({ user });
   useEffect(() => {
     dispatch(getALlReviews());
   }, []);

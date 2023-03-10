@@ -5,15 +5,13 @@ import { deleteReview, editReview, getReviewUsers } from "../Redux/Thunks/Review
 import RatingStar from "./RatingStar";
 import "../Styles/CampReviewsCard.css";
 import EditReviewModal from "./EditReviewModal";
+import useUser from "../hooks/useUser";
 
 function CampReviewsCard({ reviewDetail }) {
+  const {user} = useUser();
   const dispatch = useDispatch();
 
-  const[openEditReviewModal, setOpenEditReviewModal]= useState({
-    title:'',
-    text:'',
-    rating:''
-  })
+  const[openEditReviewModal, setOpenEditReviewModal]= useState(false)
 
   const date = new Date(reviewDetail?.createdAt).toLocaleString("en-US", {
     year: "numeric",
@@ -21,7 +19,7 @@ function CampReviewsCard({ reviewDetail }) {
   });
 
   const { reviewUsers } = useSelector((state) => state.review);
-  const { user } = useSelector((state) => state.auth);
+  // const { user } = useSelector((state) => state.auth);
 
 
   const handleDeleteReview=()=>{

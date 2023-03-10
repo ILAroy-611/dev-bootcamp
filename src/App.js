@@ -15,20 +15,28 @@ import DetailedBootcamp from './Pages/DetailedBootcamp';
 import CreateBootcamp from './Pages/CreateBootcamp';
 import UpdateBootcamp from './Pages/UpdateBootcamp';
 import CreateCourses from './Pages/CreateCourses';
+import useUser from './hooks/useUser';
 
 
 
 function App() {
 
   const dispatch = useDispatch();
+  const {user}= useUser();
+  
   const { isLoggedIn, authloading } = useSelector(state => state.auth)
 
 
-  useEffect(() => {
-    if (localStorage.getItem('token')) {
-      dispatch(getLoggedInUser(localStorage.getItem('token')))
-    }
-  }, [isLoggedIn])
+  // useEffect(() => {
+  //   if (localStorage.getItem('token')) {
+  //     dispatch(getLoggedInUser(localStorage.getItem('token')))
+  //   }
+  // }, [isLoggedIn])
+
+  // useEffect(() => {
+  //   console.log("userPresent , Inside App component");
+  // })
+  
 
 
   return (

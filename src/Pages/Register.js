@@ -3,9 +3,11 @@ import "../Styles/register.css";
 import { useDispatch } from "react-redux";
 import { register } from "../Redux/Thunks/AuthThunk";
 import { useNavigate } from "react-router-dom";
+import useUser from "../hooks/useUser";
 
 
 function Register() {
+  const{registerUser}= useUser();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   // const {isLoggedIn} = useSelector(state=>state.auth);
@@ -23,19 +25,21 @@ function Register() {
   };
 
   let checkbox= document.getElementsByName('checks')
-  const handleSubmit = (e) => {
+  async function handleSubmit(e){
     e.preventDefault();
     if(user.password===user.confirmPassword){
         if(checkbox[0].checked && checkbox[1].checked){
-        dispatch(register({name:user.name,email:user.email,password:user.password,role:user.role.toLowerCase()}));
-        navigate("/me");
+        // dispatch(register({name:user.name,email:user.email,password:user.password,role:user.role.toLowerCase()}));
+        let isLoggedIn= await registerUser({name:user.name,email:user.email,password:user.password,role:user.role.toLowerCase()})
+        if(isLoggedIn){
+          navigate('/me')}
         }
         else{
             alert('Please tick the checkboxes')
         }
     }
     else{
-        alert('Confirm Password')
+        alert('Enter Password correctly')
     }
   };
 

@@ -16,6 +16,8 @@ import CreateBootcamp from './Pages/CreateBootcamp';
 import UpdateBootcamp from './Pages/UpdateBootcamp';
 import CreateCourses from './Pages/CreateCourses';
 import useUser from './hooks/useUser';
+import { UserProvider } from './hooks/UserProvider';
+import EditCourse from './Pages/EditCourse';
 
 
 
@@ -40,7 +42,7 @@ function App() {
 
 
   return (
-    <>
+    <UserProvider>
       {authloading ?
         <Spinner />
         :
@@ -55,12 +57,13 @@ function App() {
             <Route exact path='/bootcamp/:id/edit' element={ < UpdateBootcamp /> }></Route>
             <Route exact path='/bootcamps/:slug' element={ <DetailedBootcamp /> }></Route>
             <Route exact path='/bootcamps/:id/courses' element={ < CreateCourses /> }></Route>
+            <Route exact path='/courses/:courseId' element={ < EditCourse /> }></Route>
             <Route path='/me' element={<UserProfile />}></Route>
             <Route path='/edit-profile' element={<EditProfile />}></Route>
           </Routes>
         </div>
       }
-    </>
+    </UserProvider>
 
   );
 }

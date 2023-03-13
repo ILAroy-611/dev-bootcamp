@@ -18,7 +18,7 @@
 }
 
 .courses{
-    max-width:40%;
+    max-width:50%;
 }
 .detailed-bootcamp{
     width:60%;
@@ -71,6 +71,7 @@
 
 .bootcamp-courses-container{
     text-align: justify;
+    
 }
 .bt-courses-heading, .bt-courses-text{
     margin-bottom: 2rem;
@@ -87,16 +88,16 @@
 
 .courses ol{
     list-style-type: decimal;
-    padding:0 4rem;
+    padding:0 2rem;
     font-size:1.8rem;
 }
 
 .courses li{
-    margin-bottom: 0.5rem;;
+    margin-bottom: 0.5rem;
+    /* text-indent: 1rem;; */
 }
 
 .bootcamp-review-titlebar {
-    
     max-width:75%;
     margin:0 auto;
     /* padding-top:2rem; */
@@ -150,3 +151,19 @@
     border:1px solid white;
     background-color: #008cba;;
 }
+
+.course-list-item, .course-settings{
+    display:flex;
+    align-items: center;
+    
+}
+
+.course-list-item{
+    gap:2rem;
+    margin-bottom:1rem;
+}
+
+.course-settings{
+    gap:1rem
+}
+

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { addReview } from "../Redux/Thunks/ReviewThunk";
+import { resetAddReview } from "../Redux/Slices/ReviewSlice";
 
 
 function AddReviewModal({bootcamp_id, onClose}) {
@@ -24,15 +25,16 @@ function AddReviewModal({bootcamp_id, onClose}) {
       };
 
   const handleAddReview = () => {
-    dispatch(addReview({bootcamp_id,title:reviewObj.title,text:reviewObj.text,rating:reviewObj.rating }))
+    dispatch(addReview({bootcamp_id,title:reviewObj.title,text:reviewObj.text,rating:reviewObj.rating }));
+    dispatch(resetAddReview())
   };
 
-  // useEffect(()=>{
-  //   if(isReviewAdded){
-  //     console.log('lets try to navigate after writing a review')
-  //     navigate('/bootcamps')
-  //   }
-  // },[isReviewAdded])
+  useEffect(()=>{
+    if(isReviewAdded){
+      console.log('lets try to navigate after writing a review')
+      navigate('/bootcamps')
+    }
+  },[isReviewAdded])
  
 
   return createPortal(

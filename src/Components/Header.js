@@ -2,15 +2,18 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { useUserProvider } from "../hooks/UserProvider";
 import useUser from "../hooks/useUser";
 import { reset } from "../Redux/Slices/AuthSlice";
 import { getAllBootcamps } from "../Redux/Thunks/BootCampThunk";
 import "../Styles/header.css";
 
 function Header() {
+  const ctx = useUserProvider()
+  // console.log('provider',ctx)
   // const { user,isLoggedIn } = useSelector((state) => state.auth);
   const {user, logoutUser, isLoggedIn} = useUser();
-  console.log('user in header',user)
+  // console.log('user in header',user)
   const [userPresent, setUserPresent] = useState(false)
   const dispatch = useDispatch();
   const [showAcount, setShowAccount] =useState(false)
@@ -63,7 +66,7 @@ function Header() {
               </li>:<></> }
               <li>
                 <NavLink to="/bootcamps" className="link" >
-                  New BootCamps
+                  BootCamps
                 </NavLink>
               </li>
               <li>

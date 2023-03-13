@@ -13,7 +13,7 @@ function CreateCourses() {
     weeks: 0,
     tuition: "0",
     minimumSkill: "",
-    scholarhipsAvailable: false
+    scholarshipsAvailable: false
   });
 
   const dispatch= useDispatch();
@@ -38,7 +38,7 @@ function CreateCourses() {
   }
 
 
-  console.log(courseObj)
+  // console.log(courseObj)
   return (
     <form className="add-course-container">
       <fieldset>
@@ -102,7 +102,7 @@ function CreateCourses() {
             type="checkbox"
             name="scholarhipsAvailable"
             id="course-scholarship"
-            value={courseObj.scholarhipsAvailable}
+            value={courseObj.scholarshipsAvailable}
             onChange={handleCheckbox}
           />
         </div>

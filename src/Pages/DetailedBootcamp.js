@@ -1,16 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import AddReviewModal from "../Components/AddReviewModal";
 import CampReviewsCard from "../Components/CampReviewsCard";
 import CareerTabs from "../Components/CareerTabs";
 import RatingStar from "../Components/RatingStar";
 import Spinner from "../Components/Spinner";
+import useUser from "../hooks/useUser";
 import { deleteBootcamp } from "../Redux/Thunks/BootCampThunk";
+import { deletecourse, getCourseDetail } from "../Redux/Thunks/CourseThunk";
 import "../Styles/detailedbootcamp.css";
 
 function DetailedBootcamp() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  
+  const{user}= useUser();
 
   const [openAddReviewModal, setAddReviewModal] = useState(false);
 
@@ -18,11 +23,11 @@ function DetailedBootcamp() {
     (state) => state.bootcamp
   );
 
-  const { isLoggedIn, user } = useSelector((state) => state.auth);
+  // const { isLoggedIn, user } = useSelector((state) => state.auth);
 
   const { userInfo } = useSelector((state) => state.user);
 
-  const { courseCountperBootcamp, coursesForBootcampArray, courseSuccess } =
+  const { courseDetails, courseCountperBootcamp, coursesForBootcampArray, courseSuccess } =
     useSelector((state) => state.course);
 
   const { loading, reviewsforBootcamp, reviewsCountperBootcamp } = useSelector(
@@ -37,6 +42,22 @@ function DetailedBootcamp() {
   const handleDeleteBootcamp = () => {
     dispatch(deleteBootcamp(bootcampDetails._id));
   };
+
+  const handleDeleteCourse=(courseId)=>{
+    dispatch(deletecourse(courseId))
+  }
+
+  const fetchCourseDetails=(courseId)=>{
+    dispatch(getCourseDetail(courseId));
+    
+  }
+
+  // useEffect(()=>{
+  //   if(courseDetails!==null){
+  //     console.log('helo')
+  //     navigate(`/courses/${courseDetails._id}`)
+  //   }
+  // },[courseDetails._id])
 
   return (
     <>
@@ -80,18 +101,36 @@ function DetailedBootcamp() {
               <div className="bootcamp-courses-container courses">
                 <h3 className="bt-courses-heading">Courses Offered</h3>
                 <p className="bt-courses-text">
-                  This Bootcamp offers you {courseCountperBootcamp} Courses :
+                  This Bootcamp offers you {courseCountperBootcamp} Course(s) :
                 </p>
                 <ol>
                   {courseSuccess ? (
                     coursesForBootcampArray.map((e) => {
-                      return <li key={e._id}>{e.title}</li>;
+                      return (
+                        <div className="course-list-item">
+                          <li key={e._id}>{e.title}</li>
+                          {user?._id === userInfo?._id &&
+                          user?.role == "publisher" ? (
+                            <div className="course-settings">
+                              <NavLink onClick={()=>handleDeleteCourse(e._id)}>
+                                <i className="fa-solid fa-trash delete-bootcamp-btn btn link"></i>
+                              </NavLink >
+                              <NavLink to={`/courses/${e._id}`} onClick={()=>fetchCourseDetails(e._id)}>
+                                <i class="fa-solid fa-pen-to-square update-bootcamp-btn btn link"></i>
+                              </NavLink>
+                            </div>
+                          ) : (
+                            <></>
+                          )}
+                        </div>
+                      );
                     })
                   ) : (
                     <></>
                   )}
                 </ol>
-                {isLoggedIn && user?._id === userInfo?._id && user?.role=='publisher' ? (
+                {user?._id === userInfo?._id &&
+                user?.role == "publisher" ? (
                   <div className="detailed-bootcamp-course-action-btns">
                     <NavLink
                       to={`/bootcamps/${bootcampDetails._id}/courses`}
@@ -99,25 +138,14 @@ function DetailedBootcamp() {
                     >
                       Add Course
                     </NavLink>
-                    <NavLink
-                      to={`/bootcamps/${bootcampDetails._id}`}
-                      className="update-bootcamp-btn btn link"
-                    >
-                      Update Course
-                    </NavLink>
-                    <NavLink
-                      className="delete-bootcamp-btn btn link"
-                      onClick={handleDeleteBootcamp}
-                    >
-                      Delete Course
-                    </NavLink>
                   </div>
                 ) : (
                   <></>
                 )}
               </div>
             </div>
-            {isLoggedIn && user?._id === userInfo?._id && user?.role=='publisher' ? (
+            {user?._id === userInfo?._id &&
+            user?.role == "publisher" ? (
               <div className="detailed-bootcamp-action-btns">
                 <NavLink
                   to={`/bootcamp/${bootcampDetails._id}/edit`}
@@ -144,7 +172,7 @@ function DetailedBootcamp() {
                 <h3 className="bootcamp-reviews-heading">
                   {reviewsCountperBootcamp} Reviews
                 </h3>
-                {isLoggedIn && (
+                {user && (
                   <button
                     className="add-review btn"
                     onClick={() => setAddReviewModal(!openAddReviewModal)}

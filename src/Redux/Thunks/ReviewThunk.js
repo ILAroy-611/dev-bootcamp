@@ -40,7 +40,7 @@ export const getReviewUsers = createAsyncThunk(
   "review/getSingleUser",
   async (userId, thunkAPI) => {
     const token = localStorage.getItem("token");
-    console.log("token", token);
+    // console.log("token", token);
     const res = await instance
       .get(`users/${userId}`, {
         headers: {
@@ -81,7 +81,7 @@ export const addReview = createAsyncThunk(
       )
       .then((res) => res.data)
       .catch((error) => thunkAPI.rejectWithValue(error));
-    console.log("response", response);
+    // console.log("response", response);
     return response;
   }
 );

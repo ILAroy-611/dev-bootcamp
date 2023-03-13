@@ -12,14 +12,14 @@ export default function useUser() {
 
   async function getUserInfo(token) {
     try {
-      console.log("in the try", token);
+      // console.log("in the try", token);
       const res = await instance.get(`auth/me`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")} || ${token}`,
         },
       });
       setUser(res?.data?.data || {});
-      console.log(res?.data?.data);
+      // console.log(res?.data?.data);
     } catch (error) {
       console.error({ error });
     }
@@ -37,7 +37,7 @@ export default function useUser() {
           },
         }
       );
-      console.log("after login", response?.data);
+      // console.log("after login", response?.data);
       localStorage.setItem("token", response.data.token);
       await getUserInfo(response.data.token);
       isLoggedIn=true;

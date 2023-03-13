@@ -20,7 +20,11 @@ const initialState={
 export const reviewSlice= createSlice({
     name:'review',
     initialState,
-    reducers:{},
+    reducers:{
+        resetAddReview:(state,action)=>{
+            state.isReviewAdded=false;
+        }
+    },
     extraReducers:{
         [getALlReviews.fulfilled]:(state,action)=>{
             state.reviewsDataArray=action.payload;
@@ -92,3 +96,4 @@ export const reviewSlice= createSlice({
     }
 })
 
+export const {resetAddReview} = reviewSlice.actions
